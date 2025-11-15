@@ -1,72 +1,32 @@
-
-# Fitting Poisson  distribution
+# Correlation and regression for data analysis
 # Aim : 
 
-To fit poisson distribution for the arrival of objects per minute from the feeder
+To analyse given data using coeffificient of correlation and regression line
+![image](https://user-images.githubusercontent.com/104613195/168224136-d6b64e64-7d3d-4775-9337-c8f96fe41f2d.png)
+
 
 # Software required :  
 
-Python and Visual component tool
+Python
 
 # Theory:
 
-The Poisson distribution is the discrete probability distribution of the number of events occurring in a given time period, given the average number of times the event occurs over that time period.
+Correlation describes the strength of an association between two variables, and is completely symmetrical, the correlation between A and B is the same as the correlation between B and A. However, if the two variables are related it means that when one changes by a certain amount the other changes on an average by a certain amount.  
 
-![image](https://user-images.githubusercontent.com/104613195/166248326-fd042076-8b0b-40c4-8b11-1d8e8fcb74db.png)
+If y represents the dependent variable and x the independent variable, this relationship is described as the regression of y on x. The relationship can be represented by a simple equation called the regression equation. The regression equation representing how much y changes with any given change of x can be used to construct a regression line on a scatter diagram, and in the simplest case this is assumed to be a straight line.
 
- Conditions for Poisson Distribution:
-
-1. An event can occur any number of times during a time period.
-2. Events occur independently. I
-3. The rate of occurrence is constant.
-4. The probability of an event occurring is proportional to the length of the time period. 
- 
 # Procedure :
 
-![image](https://user-images.githubusercontent.com/104613195/166251988-d0c53205-6080-4f7b-ae4c-398178586637.png)
-
-# Experiment :
-
-![image](https://user-images.githubusercontent.com/103921593/230282876-f4a5afbf-cac1-4648-a1b0-c78840638a8e.png)
+![image](https://user-images.githubusercontent.com/104613195/168225866-ac8f6610-bdc3-4ac2-a24e-2b24ba08e189.png)
 
 # Program :
-```
-import numpy as np
-import math
-import scipy.stats
 
-L = list(map(int, input().split()))
-N, M = len(L), max(L)
-
-f = [L.count(i) for i in range(M+1)]
-sf = sum(f)
-p = [f[i] / sf for i in range(M+1)]
-mean = np.inner(range(M+1), p)
-
-print("X P(X=x) Obs.Fr Exp.Fr xi")
-print("--------------------------")
-
-cal_chi2_sq = 0
-for x in range(M+1):
-    exp_fr = math.exp(-mean) * mean**x / math.factorial(x)
-    E = exp_fr * sf
-    xi = ((f[x] - E) ** 2) / E
-    cal_chi2_sq += xi
-    print(f"{x:2.2f} {exp_fr:2.3f} {f[x]:4.2f} {E:3.2f} {xi:3.2f}")
-
-print("--------------------------")
-table_chi2 = scipy.stats.chi2.ppf(1 - 0.01, df=M)
-print(f"Calculated value of Chi square is {cal_chi2_sq:4.2f}")
-print(f"Table value of chi square at 1% level is {table_chi2:4.2f}")
-print("The given data can be fitted in Poisson Distribution at 1% LOS" if cal_chi2_sq < table_chi2 else "The given data cannot be fitted in Poisson Distribution at 1% LOS")
-``` 
-
-# Output : 
-
-![dufky5eq](https://github.com/user-attachments/assets/71733632-bba5-4df9-aa2c-c6a50b04e39c)
+![image](https://github.com/ramjan1729/Correlation_Regression/assets/103921593/9eb48cbf-8ca3-4cd9-8440-ff45fd98333e)
 
 
-# Results
+# Output :
+<img width="718" height="662" alt="image" src="https://github.com/user-attachments/assets/1b37c22e-b36f-4968-9ece-24495768e369" />
 
-The Poisson distribution is fitted for the objects arrived from feeder per minute and the data is tested using Chi-square test. 
- 
+# Result :
+Thus, the program to analyse given data using co-efficient of correlation and regression line has been done
+successfully.
